@@ -1,0 +1,20 @@
+height = input("What's your height in m? > ")
+weight = input("What's your weight in kg? > ")
+size = float(height)
+kg = float(weight)
+bmi_float = kg / size ** 2
+bmi = int(bmi_float)
+round(bmi)
+print(bmi)
+if bmi < 18.5:
+    print("You are underweight.")
+elif bmi < 25:
+    print("You are normal.")
+elif bmi < 30:
+    print("You are overweight.")
+elif bmi < 35:
+    print("You are obese.")
+elif bmi < 40:
+    print("You are severely obese.")
+else:
+    print("You are morbidly obese.")
