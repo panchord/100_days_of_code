@@ -6,6 +6,6 @@ people = float(input("How many people to split the bill? "))
 tip_multiplier = str(f"1.{tip_percentage}")
 total_payment = float(bill) * float(tip_multiplier)
 individual_payment = float(total_payment) / float(people)
-individual_payment_rounded = round(individual_payment, 2)
+individual_payment_rounded = "{:.2f}".format(individual_payment)
 
 print(f"Each person should pay ${float(individual_payment_rounded)}")
