@@ -88,7 +88,7 @@ Game over.''')
         choice3 = input('''The man steps out of the altars shadow and is fully naked.
 But good news: He is really handsome and charming.
 If you win (w) or loose (l) is your choice now.
->''')
+> ''')
         if choice3 == "w":
             print(r'''
                                 ,.        ,.      ,.
