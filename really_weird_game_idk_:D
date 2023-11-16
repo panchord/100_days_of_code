@@ -53,8 +53,8 @@ elif choice1 == "w":
  |                        || .                  . ||                        ||
     ''')
     choice2 = input('''You see a man standing at the altar.
-    He preaches to an invisible audience. 
-    Do you approach him (a) or will you turn around and run as fast as you can (r)?
+He preaches to an invisible audience. 
+Do you approach him (a) or will you turn around and run as fast as you can (r)?
     > ''')
     if choice2 == "r":
         print('''Those who run fall to the church.
