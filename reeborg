@@ -51,7 +51,7 @@ jump()
 
 
 
-# hurdles 2
+    # hurdles 2
 
 def turn_right():
     turn_left()
@@ -71,3 +71,45 @@ def jump():
     
 while not at_goal():
     jump()
+
+
+
+    # hurdles 3
+
+def turn_right():
+    turn_left()
+    turn_left()
+    turn_left()
+
+
+def decline():
+    while not at_goal():
+        if front_is_clear():
+            move()
+        else:
+            turn_left()
+            return
+
+
+def check():
+    turn_right()
+    if wall_in_front():
+        jump()
+    else:
+        move()
+        turn_right()
+        decline()
+
+
+def jump():
+    turn_left()
+    move()
+    check()
+
+
+while not at_goal():
+    if front_is_clear():
+        move()
+    else:
+        jump()
+        
