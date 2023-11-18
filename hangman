@@ -129,6 +129,7 @@ To read through the rules before you go, type "rules".\n> ''').lower()
         print(display)
         while True:
             if "_" not in display:
+                print(display)
                 print(f"Congratulations! The word you were searching for was: {chosen_word}!")
                 break
             guess = input("Guess a letter: ").lower()
@@ -143,6 +144,7 @@ To read through the rules before you go, type "rules".\n> ''').lower()
                 hangman_status += 1
                 print(hangman_pics[hangman_status])
                 print(display)
+                print(f"Better luck next time! The word you were searching for was: {chosen_word}!")
                 if hangman_status == 11:
                     print("Game over.")
                     break
