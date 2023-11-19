@@ -1,0 +1,14 @@
+import math
+
+
+def paint_calc(height, width, cover):
+    result = height * width
+    cans_exact = float(result / cover)
+    cans = math.ceil(cans_exact)
+    print(f"You'll need {cans} cans of paint.")
+
+
+test_h = int(input("What is the height of your wall?\n> "))  # Height of wall (m)
+test_w = int(input("What is the width of your wall?\n> "))  # Width of wall (m)
+coverage = 5  # How many square meters one can is able to cover
+paint_calc(height=test_h, width=test_w, cover=coverage)
