@@ -1,0 +1,31 @@
+from art import logo_caesar
+print(logo_caesar)
+caesar_time = True
+while caesar_time:
+    give_input = input("Would you like to en-/decrypt something? \nPlease answer with 'yes' or 'no'\n> ")
+    if give_input == "yes":
+        alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+    
+        direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n> ")
+        text = input("Type your message:\n> ").lower()
+        shift = int(input("Type the shift number:\n> "))
+    
+    
+        def caesar(text, shift, direction):
+            new_text = ""
+            for letter in text:
+                position = alphabet.index(letter)
+                if direction == "encode":
+                    new_letter = alphabet[(position + shift) % 26]
+                else:
+                    new_letter = alphabet[(position - shift) % 26]
+                new_text += new_letter
+            print(f"Your decrypted text is: {new_text}\n")
+    
+    
+        caesar(text, shift, direction)
+    elif give_input == "no":
+        print("Goodbye")
+        caesar_time = False
+    else:
+        print("Sorry, I didn't understand you.")
