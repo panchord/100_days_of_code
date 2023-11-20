@@ -1,0 +1,43 @@
+from replit import clear
+
+from art import logo_auction
+print(logo_auction)
+print("Welcome to our silent auction")
+
+bids = []
+
+
+def add_bidder():
+    name = input("What is your name?\n> ")
+    bid = input("How much do you want to bid?\n> ")
+    bids.append({
+        "name": name,
+        "bid": bid
+    })
+    clear()
+
+
+def get_highest_bid():
+    highest_bid = 0
+    highest_bidder = ""
+    for bid in bids:
+        if int(bid["bid"]) > highest_bid:
+            highest_bid = int(bid["bid"])
+            highest_bidder = bid["name"]
+    print(f"The highest bid came from {highest_bidder} ({highest_bid})")
+        
+
+
+auction_running = True
+while auction_running:
+    continue_program = input("Are there any more bidders? Answer with 'yes' or 'no'\n> ")
+    if continue_program == "yes":
+        clear()
+        add_bidder()
+    elif continue_program == "no":
+        clear()
+        get_highest_bid()
+        auction_running = False
+    else:
+        print("Input unclear. Please answer with 'yes' or 'no'.")
+        
