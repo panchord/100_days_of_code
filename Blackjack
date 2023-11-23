@@ -1,0 +1,90 @@
+import random
+from art import logo_blackjack
+print(logo_blackjack)
+print("Welcome to blackjack!")
+
+player_cards = []
+comp_cards = []
+
+
+def deal():
+    """player_cards.append(deal()), comp_cards.append(deal())"""
+    cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
+    return cards[random.randint(0, 12)]
+
+
+def beginning_hand():
+    player_cards.append(deal())
+    player_cards.append(deal())
+    comp_cards.append(deal())
+    comp_cards.append(deal())
+    print(f"Player Cards: {player_cards}, Computer Cards: [{comp_cards[0]}, X]")
+
+
+def hit_or_stay():
+    global game_time
+    hit = input("Would you like another card? Type 'y' for yes and 'n' for no.\n> ")
+    if hit == "y":
+        player_cards.append(deal())
+        print(f"Player Cards: {player_cards}, Computer Cards: [{comp_cards[0]}, X]")
+        if sum(comp_cards) < 21 and sum(comp_cards) < sum(player_cards):
+            comp_cards.append(deal())
+            print(f"Player Cards: {player_cards}, Computer Cards: [{comp_cards[0]}, X]")
+            if sum(player_cards) > 21:
+                print(f"Player Cards: {player_cards}, Computer Cards: {comp_cards}")
+                print("Busted! Computer wins!")
+                game_time = False
+            elif sum(comp_cards) > 21:
+                print(f"Player Cards: {player_cards}, Computer Cards: {comp_cards}")
+                print("Busted! Player wins!")
+                game_time = False
+            elif sum(comp_cards) == 21:
+                print(f"Player Cards: {player_cards}, Computer Cards: {comp_cards}")
+                print("Blackjack! Computer wins!")
+    else:
+        if sum(comp_cards) < 21 and sum(comp_cards) < sum(player_cards):
+            comp_cards.append(deal())
+            print(f"Player Cards: {player_cards}, Computer Cards: [{comp_cards[0]}, X]")
+        elif sum(player_cards) < sum(comp_cards):
+            print(f"Player Cards: {player_cards}, Computer Cards: {comp_cards}")
+            print("Computer wins")
+            game_time = False
+        else:
+            print(f"Player Cards: {player_cards}, Computer Cards: {comp_cards}")
+            print("It's a draw!")
+            game_time = False
+
+
+beginning_hand()
+
+game_time = True
+while game_time:
+    if int(11) in player_cards and sum(player_cards) > 21:
+        search_11 = player_cards.index(11)
+        player_cards[search_11] = int(1)
+    elif int(11) in comp_cards and sum(comp_cards) > 21:
+        search_11 = comp_cards.index(11)
+        comp_cards[search_11] = int(1)
+    elif sum(player_cards) == 21 and sum(comp_cards) < 21:
+        print(f"Player Cards: {player_cards}, Computer Cards: {comp_cards}")
+        print("Blackjack! Player wins!")
+        game_time = False
+    elif sum(comp_cards) == 21 and sum(player_cards) < 21:
+        print(f"Player Cards: {player_cards}, Computer Cards: {comp_cards}")
+        print("Blackjack! Computer wins!")
+        game_time = False
+    elif sum(player_cards) > 21:
+        print(f"Player Cards: {player_cards}, Computer Cards: {comp_cards}")
+        print("Busted! Computer wins!")
+        game_time = False
+    elif sum(comp_cards) > 21:
+        print(f"Player Cards: {player_cards}, Computer Cards: {comp_cards}")
+        print("Busted! Player wins!")
+        game_time = False
+    elif sum(player_cards) == sum(comp_cards):
+        hit_or_stay()
+    else:
+        hit_or_stay()
+
+# mby whileloop einbauen mit dem der comp unter 15 immer nachziehen muss, damit man nicht immer bestätigen muss,
+# dass man keine neue Karte haben will.
