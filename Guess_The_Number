@@ -1,0 +1,35 @@
+import random
+from art import logo_GTN
+
+running = True
+while running:
+    print(logo_GTN)
+    print("Welcome to Guess The Number!")
+    start = input("Do you want to play a round?\nAnswer with 'y' to play or 'q' to quit.\n> ")
+    if start == "y":
+        secret_number = random.randint(1, 100)
+        max_tries = []
+        difficulty = input("Would you like to play in 'easy' or 'hard' mode?\n> ")
+        max_tries = 4 if difficulty == "hard" else 10
+
+        game_time = True
+        while game_time:
+            if max_tries > 0:
+                pick = int(input("Pick a number:\n> "))
+                if pick == secret_number:
+                    print(f"You won! {secret_number} was the secret number!")
+                    game_time = False
+                elif pick < secret_number:
+                    max_tries -= 1
+                    print("You are looking for a bigger number")
+                else:
+                    max_tries -= 1
+                    print("You are looking for a smaller number")
+            else:
+                print("You lost. :(")
+                game_time = False
+    elif start == "q":
+        print("Goodbye")
+        running = False
+    else:
+        print("Unknown input")
