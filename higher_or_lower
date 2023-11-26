@@ -1,0 +1,70 @@
+import random
+import higher_or_lower_data
+from art import logo_higher_or_lower
+from art import vs
+print(logo_higher_or_lower)
+
+
+def random_number():
+    rand_numb = random.randint(0, 49)
+    return rand_numb
+
+
+def new_account():
+    global first_account
+    global second_account
+    first_account = second_account
+    second_account = higher_or_lower_data.data[random_number()]
+
+
+right_counter = 0
+
+running = True
+while running:
+    game_time = input('''Welcome to Higher or Lower! 
+Type 'p' to play a game and 'q' to quit.\n> ''').lower()
+    if game_time == "p":
+        first_account = higher_or_lower_data.data[random_number()]
+        second_account = higher_or_lower_data.data[random_number()]
+        winning = True
+        while winning:
+            print(f"A: {first_account["name"]}, a {first_account["description"]} from {first_account["country"]}")
+            print(vs)
+            print(f"B: {second_account["name"]}, a {second_account["description"]} from {second_account["country"]}")
+            guess = input("Who do you think has more follower on Instagram? 'A' or 'B'?\n> ").lower()
+            if guess == "a":
+                if first_account["follower_count"] > second_account["follower_count"]:
+                    print("You're right!")
+                    print(f'''{first_account["name"]} has {first_account["follower_count"]} Million followers, 
+{second_account["name"]} has {second_account["follower_count"]}Million followers.''')
+                    right_counter += 1
+                    print(f"Your score is: {right_counter}")
+                    new_account()
+                else:
+                    print("You lost.")
+                    print(f'''{first_account["name"]} has {first_account["follower_count"]} Million followers, 
+{second_account["name"]} has {second_account["follower_count"]} Million followers.''')
+                    print(f"Your score was: {right_counter}")
+                    right_counter = 0
+                    winning = False
+            elif guess == "b":
+                if second_account["follower_count"] > first_account["follower_count"]:
+                    print("You're right!")
+                    print(f'''{first_account["name"]} has {first_account["follower_count"]} Million followers, 
+{second_account["name"]} has {second_account["follower_count"]} Million followers.''')
+                    right_counter += 1
+                    print(f"Your score is: {right_counter}")
+                    new_account()
+                else:
+                    print("You lost.")
+                    print(f'''{first_account["name"]} has {first_account["follower_count"]} Million followers, 
+{second_account["name"]} has {second_account["follower_count"]} Million followers.''')
+                    print(f"Your score was: {right_counter}")
+                    right_counter = 0
+                    winning = False
+        else:
+            print("Unknown input")
+    elif game_time == "q":
+        running = False
+    else:
+        print("Unknown Input.")
