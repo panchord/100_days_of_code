@@ -31,7 +31,7 @@ Type 'p' to play a game and 'q' to quit.\n> ''').lower()
             print(f"A: {first_account["name"]}, a {first_account["description"]} from {first_account["country"]}")
             print(vs)
             print(f"B: {second_account["name"]}, a {second_account["description"]} from {second_account["country"]}")
-            guess = input("Who do you think has more follower on Instagram? 'A' or 'B'?\n> ").lower()
+            guess = input("Who do you think has more followers on Instagram? 'A' or 'B'?\n> ").lower()
             if guess == "a":
                 if first_account["follower_count"] > second_account["follower_count"]:
                     print("You're right!")
