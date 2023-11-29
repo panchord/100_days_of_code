@@ -71,7 +71,7 @@ running = True
 while running:
     print("Espresso: €1.50, Latte: €2.50, Cappuccino: €3")
     balance = float(input(f"Please insert €:\n> "))
-    coffee_choice = input("What would you like? (espresso/latte/cappuccino):\n> ")
+    coffee_choice = input("What would you like? (espresso/latte/cappuccino):\n> ").lower()
     if coffee_choice == "off":
         running = False
     elif coffee_choice == "report":
