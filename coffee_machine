@@ -1,0 +1,92 @@
+import time
+MENU = {
+    "espresso": {
+        "ingredients": {
+            "water": 50,
+            "milk": 0,
+            "coffee": 18,
+        },
+        "cost": 1.5,
+    },
+    "latte": {
+        "ingredients": {
+            "water": 200,
+            "milk": 150,
+            "coffee": 24,
+        },
+        "cost": 2.5,
+    },
+    "cappuccino": {
+        "ingredients": {
+            "water": 250,
+            "milk": 100,
+            "coffee": 24,
+        },
+        "cost": 3.0,
+    }
+}
+
+resources = {
+    "water": 300,
+    "milk": 200,
+    "coffee": 100,
+}
+
+
+def check_for_resources(coffee):
+    if resources["water"] < MENU[coffee]["ingredients"]["water"]:
+        return "water"
+    elif resources["milk"] < MENU[coffee]["ingredients"]["milk"]:
+        return "milk"
+    elif resources["coffee"] < MENU[coffee]["ingredients"]["coffee"]:
+        return "coffee"
+    else:
+        return "clear"
+
+
+def make_coffee(coffee):
+    not_enough = check_for_resources(coffee)
+    if not_enough == "clear":
+        resources["water"] -= MENU[coffee]["ingredients"]["water"]
+        resources["milk"] -= MENU[coffee]["ingredients"]["milk"]
+        resources["coffee"] -= MENU[coffee]["ingredients"]["coffee"]
+        print(f"Making {coffee}...")
+        time.sleep(3)
+        print(f"Here is your {coffee}. Enjoy!")
+    else:
+        print(f"Sorry there is not enough {not_enough}.")
+
+
+def handle_money(coffee):
+    global money
+    global balance
+    balance -= MENU[coffee]["cost"]
+    money += MENU[coffee]["cost"]
+    print(f"Here is €{balance} in change")
+
+
+money = float(0)
+
+running = True
+while running:
+    print("Espresso: €1.50, Latte: €2.50, Cappuccino: €3")
+    balance = float(input(f"Please insert €:\n> "))
+    coffee_choice = input("What would you like? (espresso/latte/cappuccino):\n> ")
+    if coffee_choice == "off":
+        running = False
+    elif coffee_choice == "report":
+        print(f'''Water: {resources["water"]}
+Milk: {resources["milk"]}
+Coffee: {resources["coffee"]}
+Money: {money}''')
+    elif coffee_choice == "espresso" and balance > MENU[coffee_choice]["cost"]:
+        make_coffee(coffee_choice)
+        handle_money(coffee_choice)
+    elif coffee_choice == "latte" and balance > MENU[coffee_choice]["cost"]:
+        make_coffee(coffee_choice)
+        handle_money(coffee_choice)
+    elif coffee_choice == "cappuccino" and balance > MENU[coffee_choice]["cost"]:
+        make_coffee(coffee_choice)
+        handle_money(coffee_choice)
+    else:
+        print("Unknown Input")
