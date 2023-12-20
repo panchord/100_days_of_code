@@ -1,0 +1,19 @@
+# pass to leave the class clear without creating an error message
+class User:
+    def __init__(self, user_id, username):
+        self.id = user_id
+        self.name = username
+        self.followers = 0
+        self.following = 0
+
+    def follow(self, user):
+        user.followers += 1
+        self.following += 1
+
+
+user_1 = User("001", "Malte")
+user_2 = User("002", "Maya")
+user_1.follow(user_2)
+
+print(f"ID: {user_1.id}\nName: {user_1.name}\nFollowers: {user_1.followers}\nFollowing: {user_1.following}")
+print(f"ID: {user_2.id}\nName: {user_2.name}\nFollowers: {user_2.followers}\nFollowing: {user_2.following}")
