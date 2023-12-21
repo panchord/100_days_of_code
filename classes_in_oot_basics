@@ -1,4 +1,3 @@
-# pass to leave the class clear without creating an error message
 class User:
     def __init__(self, user_id, username):
         self.id = user_id
