@@ -1,0 +1,45 @@
+import turtle
+from turtle import Turtle, Screen
+import random
+
+tim = Turtle()
+turtle.colormode(255)
+colors = [
+    (49, 31, 21),
+    (117, 90, 61),
+    (17, 18, 24),
+    (19, 11, 15),
+    (244, 232, 194),
+    (182, 156, 118)
+]
+
+tim.shape("turtle")
+tim.speed("fastest")
+tim.penup()
+
+tim.right(180)
+tim.forward(500)
+tim.right(90)
+tim.forward(400)
+tim.right(90)
+
+
+def paint_row(row_length):
+    for number in range(row_length):
+        tim.dot(80, colors[random.randint(0, 5)])
+        tim.forward(150)
+
+
+def paint_hirst(row_length, row_count):
+    for number in range(0, row_count):
+        paint_row(row_length)
+        tim.right(180)
+        tim.forward(150 * row_length)
+        tim.right(270)
+        tim.forward(150)
+        tim.right(270)
+
+
+paint_hirst(7, 5)
+screen = Screen()
+screen.exitonclick()
