@@ -48,12 +48,12 @@ import random
 
 tim = Turtle()
 tim.shape("turtle")
-tim.speed(0)
+tim.speed("fastest")
 tim.pensize(10)
 colors = ["dark green", "turquoise", "cornsilk", "dark red", "slate blue", "dark orange"]
 angle = [0, 90, 180, 270]
 
-for num in range(100):
+for num in range(200):
     tim.color(colors[random.randint(0, 5)])
     tim.right(angle[random.randint(0, 3)])
     tim.forward(30)
