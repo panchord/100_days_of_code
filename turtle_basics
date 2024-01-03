@@ -18,37 +18,37 @@ for i in range(20):
 
 ----------------------------
 
-for i in range(3):
-    tim.forward(50)
-    tim.right(120)
+def draw_shape(sides):
+    for i in range(sides):
+        angle = 360 / sides
+        tim.forward(50)
+        tim.right(angle)
 
-for i in range(4):
-    tim.forward(50)
-    tim.right(90)
 
-for i in range(5):
-    tim.forward(50)
-    tim.right(72)
+for number in range(3, 11):
+    draw_shape(number)
 
-for i in range(6):
-    tim.forward(50)
-    tim.right(60)
+----------------------------
 
-for i in range(7):
-    tim.forward(50)
-    tim.right(51.4285714286)
+from turtle import Turtle, Screen
+import random
 
-for i in range(8):
-    tim.forward(50)
-    tim.right(45)
+tim = Turtle()
+tim.shape("turtle")
+tim.speed(0)
+tim.pensize(10)
+colors = ["dark green", "turquoise", "cornsilk", "dark red", "slate blue", "dark orange"]
+angle = [0, 90, 180, 270]
 
-for i in range(9):
-    tim.forward(50)
-    tim.right(40)
+for num in range(100):
+    tim.color(colors[random.randint(0, 5)])
+    tim.right(angle[random.randint(0, 3)])
+    tim.forward(30)
 
-for i in range(10):
-    tim.forward(50)
-    tim.right(36)
+screen = Screen()
+screen.exitonclick()
+
+---------------------------
 
 screen = Screen()
 screen.exitonclick()
