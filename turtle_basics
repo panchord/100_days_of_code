@@ -43,18 +43,29 @@ screen.exitonclick()
 
 ----------------------------
 
+import turtle
 from turtle import Turtle, Screen
 import random
 
+turtle.colormode(255)
 tim = Turtle()
+
 tim.shape("turtle")
 tim.speed("fastest")
 tim.pensize(10)
-colors = ["dark green", "turquoise", "cornsilk", "dark red", "slate blue", "dark orange"]
 angle = [0, 90, 180, 270]
 
+
+def random_color():
+    r = random.randint(0, 255)
+    g = random.randint(0, 255)
+    b = random.randint(0, 255)
+    rgb_tuple = (r, g, b)
+    return rgb_tuple
+
+
 for num in range(200):
-    tim.color(colors[random.randint(0, 5)])
+    tim.color(random_color())
     tim.right(angle[random.randint(0, 3)])
     tim.forward(30)
 
