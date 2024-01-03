@@ -8,7 +8,12 @@ for i in range(4):
     tim.forward(100)
     tim.right(90)
 
+screen = Screen()
+screen.exitonclick()
+
 ----------------------------
+
+from turtle import Turtle, Screen
 
 for i in range(20):
     tim.forward(10)
@@ -16,7 +21,12 @@ for i in range(20):
     tim.forward(10)
     tim.pendown()
 
+screen = Screen()
+screen.exitonclick()
+
 ----------------------------
+
+from turtle import Turtle, Screen
 
 def draw_shape(sides):
     for i in range(sides):
@@ -27,6 +37,9 @@ def draw_shape(sides):
 
 for number in range(3, 11):
     draw_shape(number)
+
+screen = Screen()
+screen.exitonclick()
 
 ----------------------------
 
@@ -50,5 +63,4 @@ screen.exitonclick()
 
 ---------------------------
 
-screen = Screen()
-screen.exitonclick()
+
