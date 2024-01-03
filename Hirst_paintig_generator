@@ -23,7 +23,7 @@ tim.right(90)
 
 def paint_row(row_length):
     for number in range(row_length):
-        tim.dot(80, colors[random.randint(0, 29)])
+        tim.dot(80, colors[random.randint(0, len(colors) - 1)])
         tim.forward(150)
 
 
